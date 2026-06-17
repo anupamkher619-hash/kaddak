@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kaddak — Editing Agency</title>
+<meta name="description" content="Kaddak is India's most kaddak video editing agency. We build narratives that keep people watching till the last second. First collab edit is free.">
+<meta name="keywords" content="video editing agency India, content editing, reels editing, podcast clips, retention editing, Punjabi content, Hindi creator">
+<meta property="og:title" content="Kaddak — Editing Agency">
+<meta property="og:description" content="We don't just cut clips. We build narratives that keep people watching till the last second.">
+<meta property="og:url" content="https://kaddak.online">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kaddak — Editing Agency">
+<meta name="twitter:description" content="We don't just cut clips. We build narratives that keep people watching till the last second.">
+<link rel="canonical" href="https://kaddak.online">
 <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi&family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -77,6 +87,46 @@
     transition: transform 0.1s, box-shadow 0.1s;
   }
   .nav-cta:hover { transform: translate(1px,1px); box-shadow: 1px 2px 0 var(--saffron-dark); }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text-dark);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  @media (max-width: 640px) {
+    .hamburger { display: flex; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0; right: 0;
+      background: rgba(254,243,226,0.98);
+      flex-direction: column;
+      gap: 0;
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.5rem 0;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { border-bottom: 1px solid var(--border-color); }
+    .nav-links a { display: block; padding: 0.85rem 2rem; font-size: 1rem; }
+    .nav-cta { display: none; }
+  }
 
   /* ── HERO ── */
   .hero {
@@ -424,7 +474,10 @@
 <!-- NAV -->
 <nav>
   <div class="logo">KAD<span>DAK</span></div>
-  <ul class="nav-links">
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
     <li><a href="#work">Work</a></li>
     <li><a href="#showcase">Showcase</a></li>
     <li><a href="#process">Process</a></li>
@@ -637,8 +690,7 @@
     <h2>Ready to be <span class="gold">Kaddak?</span></h2>
     <p>Send us your worst-performing video. We'll show you what it could have been — for free.</p>
     <div class="cta-btns">
-      <a href="https://wa.me/91XXXXXXXXXX" class="btn-cta">WhatsApp us ↗</a>
-      <a href="mailto:hello@kaddak.in" class="btn-ghost">Email us</a>
+      <a href="mailto:conect@kaddak.online" class="btn-cta">Email us ↗</a>
     </div>
   </div>
 </div>
@@ -647,14 +699,26 @@
 <footer>
   <div class="footer-logo">KADDAK</div>
   <div class="footer-links">
-    <a href="#">Instagram</a>
-    <a href="#">YouTube</a>
-    <a href="#">LinkedIn</a>
+    <a href="https://www.instagram.com/kaddak.media/" target="_blank" rel="noopener">Instagram</a>
   </div>
   <div class="footer-note">© 2026 Kaddak. India's most kaddak editing agency.</div>
 </footer>
 
 <script>
+  // Hamburger menu
+  var hamburger = document.getElementById('hamburger');
+  var navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+
   // Toggle कड़क ↔ KADDAK every 4 seconds
   var hindi = document.getElementById('layer-hindi');
   var eng = document.getElementById('layer-eng');
