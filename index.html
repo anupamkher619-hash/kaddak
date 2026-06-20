@@ -389,6 +389,36 @@
   }
   .after-btn:hover { transform: translate(1px,1px); box-shadow: 1px 2px 0 var(--saffron-dark); }
 
+  /* ── BEFORE/AFTER VIDEO TOGGLE ── */
+  .ba-toggle {
+    display: flex; gap: 0; background: var(--cream2);
+    border: 1.5px solid var(--border-dark); border-radius: 9px;
+    padding: 3px; margin-bottom: 1rem;
+  }
+  .ba-toggle button {
+    flex: 1; border: none; background: transparent;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+    font-size: 0.82rem; padding: 0.5rem 0; border-radius: 7px;
+    cursor: pointer; color: var(--text-mid);
+    transition: background 0.2s, color 0.2s, box-shadow 0.1s;
+  }
+  .ba-toggle button.active {
+    background: var(--saffron); color: #fff;
+    box-shadow: 1px 2px 0 var(--saffron-dark);
+  }
+  .ba-toggle button:not(.active):hover { background: var(--cream3); }
+
+  .ba-embed-wrap {
+    position: relative; width: 100%;
+    border-radius: 10px; overflow: hidden;
+    background: #000; margin-bottom: 1rem;
+  }
+  .ba-embed-frame {
+    width: 100%; min-height: 480px; border: none; display: block;
+  }
+  .ba-embed-pane { display: none; }
+  .ba-embed-pane.active { display: block; }
+
   .work-coming {
     border: 2px dashed var(--border-dark); border-radius: 14px;
     background: transparent; display: flex; align-items: center;
@@ -585,14 +615,24 @@
     <div class="work-grid">
 
       <div class="work-card">
-        <div class="work-thumb t1" style="flex-direction:column; gap:0.5rem;">
-          🎬
-          <span style="font-size:0.95rem; font-weight:700; color:#1a0800;">@baby0la</span>
-          <span class="work-label">Filmmaking</span>
-        </div>
-        <div class="work-body">
+        <div class="work-body" style="padding-top:1.3rem;">
           <div class="work-niche">Filmmaking · Instagram Reels</div>
           <div class="work-title">@baby0la</div>
+
+          <div class="ba-toggle">
+            <button type="button" class="ba-toggle-btn active" data-target="before-baby0la">▶ Before</button>
+            <button type="button" class="ba-toggle-btn" data-target="after-baby0la">▶ After</button>
+          </div>
+
+          <div class="ba-embed-wrap">
+            <div class="ba-embed-pane active" id="before-baby0la">
+              <iframe class="ba-embed-frame" src="https://www.instagram.com/reel/C6VdSnArEfy/embed" loading="lazy" allowtransparency="true" allow="encrypted-media"></iframe>
+            </div>
+            <div class="ba-embed-pane" id="after-baby0la">
+              <iframe class="ba-embed-frame" src="https://www.instagram.com/reel/DUfsM2Eknu7/embed" loading="lazy" allowtransparency="true" allow="encrypted-media"></iframe>
+            </div>
+          </div>
+
           <div class="work-desc">Same creator, same style — just a better edit. Reworked the hook, pacing, and story structure. Views jumped from 1K to 44.5K.</div>
           <div class="work-stats">
             <div class="work-stat">
@@ -603,10 +643,6 @@
               <div class="work-stat-num">1K→44.5K</div>
               <div class="work-stat-label">Views</div>
             </div>
-          </div>
-          <div style="display:flex; gap:0.75rem; margin-top:1.1rem;">
-            <a href="https://www.instagram.com/reel/C6VdSnArEfy/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener" class="ba-btn before-btn">▶ Before</a>
-            <a href="https://www.instagram.com/reel/DUfsM2Eknu7/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener" class="ba-btn after-btn">▶ After</a>
           </div>
         </div>
       </div>
@@ -729,7 +765,21 @@
     });
   });
 
-  // Toggle कड़क ↔ KADDAK every 4 seconds
+  // Before/After video toggle
+  document.querySelectorAll('.work-card').forEach(function(card) {
+    var btns = card.querySelectorAll('.ba-toggle-btn');
+    btns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        btns.forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        card.querySelectorAll('.ba-embed-pane').forEach(function(pane) {
+          pane.classList.remove('active');
+        });
+        document.getElementById(btn.dataset.target).classList.add('active');
+      });
+    });
+  });
+
   var hindi = document.getElementById('layer-hindi');
   var eng = document.getElementById('layer-eng');
   var showingHindi = true;
