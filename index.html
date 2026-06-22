@@ -317,115 +317,59 @@
   .step-title { font-size: 0.98rem; font-weight: 600; margin-bottom: 0.35rem; color: var(--text-dark); }
   .step-desc { font-size: 0.82rem; color: var(--text-mid); line-height: 1.5; }
 
-  /* ── SHOWCASE ── */
+  /* ── VIDEOS DONE KADDAK ── */
   .showcase-bg {
     background: var(--cream3);
     padding: 5rem 2.5rem;
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
   }
-  .showcase-inner { max-width: 960px; margin: 0 auto; }
-  .work-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem; margin-top: 2.5rem;
+  .showcase-inner { max-width: 1020px; margin: 0 auto; }
+
+  .cat-tabs {
+    display: flex; gap: 0.5rem; margin-top: 2rem; flex-wrap: wrap;
   }
-  .work-card {
+  .cat-tab {
+    border: 1.5px solid var(--border-dark);
+    background: var(--cream); color: var(--text-mid);
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+    font-size: 0.82rem; padding: 0.5rem 1.2rem; border-radius: 8px;
+    cursor: pointer; transition: all 0.18s; letter-spacing: 0.3px;
+  }
+  .cat-tab:hover { background: var(--cream2); color: var(--text-dark); }
+  .cat-tab.active {
+    background: var(--saffron); color: #fff;
+    border-color: var(--saffron); box-shadow: 2px 3px 0 var(--saffron-dark);
+  }
+
+  .cat-panel { display: none; margin-top: 2rem; }
+  .cat-panel.active { display: block; }
+
+  .vid-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .vid-card {
     border: 1px solid var(--border-color); border-radius: 14px;
     background: var(--cream); overflow: hidden;
     transition: border-color 0.2s, transform 0.2s;
+    display: flex; flex-direction: column;
   }
-  .work-card:hover { border-color: var(--saffron); transform: translateY(-3px); }
-  .work-thumb {
-    width: 100%; height: 175px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 2.5rem; position: relative; overflow: hidden;
-  }
-  .work-thumb.t1 { background: linear-gradient(135deg, #FDE68A, #FCA5A5); }
-  .work-thumb.t2 { background: linear-gradient(135deg, #C4B5FD, #93C5FD); }
-  .work-thumb.t3 { background: linear-gradient(135deg, #A7F3D0, #6EE7B7); }
-  .work-label {
-    position: absolute; top: 10px; left: 10px;
-    background: rgba(0,0,0,0.55); color: #fff;
-    font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
-    padding: 0.25rem 0.6rem; border-radius: 20px;
-    backdrop-filter: blur(4px);
-  }
-  .before-after {
-    position: absolute; bottom: 10px; right: 10px;
-    display: flex; gap: 6px;
-  }
-  .ba-pill {
-    font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.55rem;
-    border-radius: 10px; letter-spacing: 0.5px;
-  }
-  .ba-before { background: rgba(0,0,0,0.4); color: rgba(255,255,255,0.7); }
-  .ba-after { background: var(--saffron); color: #fff; }
-  .work-body { padding: 1.2rem 1.3rem 1.4rem; }
-  .work-niche {
-    font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--saffron); margin-bottom: 0.4rem;
-  }
-  .work-title { font-size: 1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.3rem; }
-  .work-desc { font-size: 0.82rem; color: var(--text-mid); line-height: 1.5; margin-bottom: 1rem; }
-  .work-stats { display: flex; gap: 1rem; }
-  .work-stat { text-align: center; }
-  .work-stat-num { font-size: 1.2rem; font-weight: 900; color: var(--saffron); letter-spacing: -1px; }
-  .work-stat-label { font-size: 0.7rem; color: var(--text-muted); }
-  .ba-btn {
-    flex: 1; text-align: center; text-decoration: none;
-    padding: 0.55rem 0; border-radius: 8px;
-    font-size: 0.82rem; font-weight: 700; cursor: pointer;
-    transition: transform 0.1s, box-shadow 0.1s;
-    display: inline-block;
-  }
-  .before-btn {
-    background: var(--cream2); color: var(--text-mid);
-    border: 1.5px solid var(--border-dark);
-  }
-  .before-btn:hover { background: var(--cream3); }
-  .after-btn {
-    background: var(--saffron); color: #fff;
-    border: none; box-shadow: 2px 3px 0 var(--saffron-dark);
-  }
-  .after-btn:hover { transform: translate(1px,1px); box-shadow: 1px 2px 0 var(--saffron-dark); }
+  .vid-card:hover { border-color: var(--saffron); transform: translateY(-3px); }
 
-  /* ── BEFORE/AFTER VIDEO TOGGLE ── */
-  .ba-toggle {
-    display: flex; gap: 0; background: var(--cream2);
-    border: 1.5px solid var(--border-dark); border-radius: 9px;
-    padding: 3px; margin-bottom: 1rem;
-  }
-  .ba-toggle button {
-    flex: 1; border: none; background: transparent;
-    font-family: 'Space Grotesk', sans-serif; font-weight: 700;
-    font-size: 0.82rem; padding: 0.5rem 0; border-radius: 7px;
-    cursor: pointer; color: var(--text-mid);
-    transition: background 0.2s, color 0.2s, box-shadow 0.1s;
-  }
-  .ba-toggle button.active {
-    background: var(--saffron); color: #fff;
-    box-shadow: 1px 2px 0 var(--saffron-dark);
-  }
-  .ba-toggle button:not(.active):hover { background: var(--cream3); }
+  .vid-embed-wrap { width: 100%; background: #111; overflow: hidden; flex-shrink: 0; }
+  .vid-embed-wrap.portrait { aspect-ratio: 9/16; }
+  .vid-embed-wrap.landscape { aspect-ratio: 16/9; }
+  .vid-embed-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
 
-  .ba-embed-wrap {
-    position: relative; width: 100%;
-    border-radius: 10px; overflow: hidden;
-    background: #000; margin-bottom: 1rem;
+  .vid-info { padding: 0.9rem 1.1rem 1.1rem; }
+  .vid-tag {
+    font-size: 0.65rem; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--saffron); margin-bottom: 0.25rem; font-weight: 600;
   }
-  .ba-embed-frame {
-    width: 100%; min-height: 480px; border: none; display: block;
-  }
-  .ba-embed-pane { display: none; }
-  .ba-embed-pane.active { display: block; }
-
-  .work-coming {
-    border: 2px dashed var(--border-dark); border-radius: 14px;
-    background: transparent; display: flex; align-items: center;
-    justify-content: center; min-height: 300px; flex-direction: column; gap: 0.75rem;
-  }
-  .work-coming-icon { font-size: 2rem; opacity: 0.3; }
-  .work-coming p { font-size: 0.85rem; color: var(--text-muted); text-align: center; max-width: 180px; line-height: 1.5; }
+  .vid-title { font-size: 0.92rem; font-weight: 700; color: var(--text-dark); }
 
   /* ── STATS ── */
   .stat-grid {
@@ -611,49 +555,155 @@
 <div class="showcase-bg" id="showcase">
   <div class="showcase-inner">
     <div class="section-label">our work</div>
-    <h2 class="section-title">Before Kaddak.<br><span class="accent">After Kaddak.</span></h2>
-    <div class="work-grid">
+    <h2 class="section-title">Videos done <span class="accent">Kaddak.</span></h2>
 
-      <div class="work-card">
-        <div class="work-body" style="padding-top:1.3rem;">
-          <div class="work-niche">Filmmaking · Instagram Reels</div>
-          <div class="work-title">@baby0la</div>
+    <div class="cat-tabs">
+      <button class="cat-tab active" data-cat="reels">📱 Reels</button>
+      <button class="cat-tab" data-cat="long">🎬 Long Videos</button>
+      <button class="cat-tab" data-cat="music">🎵 Music Videos</button>
+    </div>
 
-          <div class="ba-toggle">
-            <button type="button" class="ba-toggle-btn active" data-target="before-baby0la">▶ Before</button>
-            <button type="button" class="ba-toggle-btn" data-target="after-baby0la">▶ After</button>
+    <!-- REELS -->
+    <div class="cat-panel active" id="cat-reels">
+      <div class="vid-grid">
+
+        <div class="vid-card">
+          <div class="vid-embed-wrap portrait">
+            <iframe src="https://www.instagram.com/reel/DUfsM2Eknu7/embed" loading="lazy" allowtransparency="true" allow="encrypted-media"></iframe>
           </div>
-
-          <div class="ba-embed-wrap">
-            <div class="ba-embed-pane active" id="before-baby0la">
-              <iframe class="ba-embed-frame" src="https://www.instagram.com/reel/C6VdSnArEfy/embed" loading="lazy" allowtransparency="true" allow="encrypted-media"></iframe>
-            </div>
-            <div class="ba-embed-pane" id="after-baby0la">
-              <iframe class="ba-embed-frame" src="https://www.instagram.com/reel/DUfsM2Eknu7/embed" loading="lazy" allowtransparency="true" allow="encrypted-media"></iframe>
-            </div>
-          </div>
-
-          <div class="work-desc">Same creator, same style — just a better edit. Reworked the hook, pacing, and story structure. Views jumped from 1K to 44.5K.</div>
-          <div class="work-stats">
-            <div class="work-stat">
-              <div class="work-stat-num">44x</div>
-              <div class="work-stat-label">View jump</div>
-            </div>
-            <div class="work-stat">
-              <div class="work-stat-num">1K→44.5K</div>
-              <div class="work-stat-label">Views</div>
-            </div>
+          <div class="vid-info">
+            <div class="vid-tag">Reels · Instagram</div>
+            <div class="vid-title">@baby0la</div>
           </div>
         </div>
-      </div>
 
-      <div class="work-coming">
-        <div class="work-coming-icon">✦</div>
-        <p>Your channel could be next. First collab edit is free.</p>
-        <a href="#contact" class="btn-primary" style="font-size:0.82rem; padding: 0.55rem 1.2rem; margin-top:0.5rem;">Get yours ↗</a>
-      </div>
+        <div class="vid-card">
+          <div class="vid-embed-wrap portrait">
+            <iframe src="https://www.instagram.com/reel/DTp1KvIjJ_E/embed" loading="lazy" allowtransparency="true" allow="encrypted-media"></iframe>
+          </div>
+          <div class="vid-info">
+            <div class="vid-tag">Reels · Instagram</div>
+            <div class="vid-title">Reel 2</div>
+          </div>
+        </div>
 
+        <div class="vid-card">
+          <div class="vid-embed-wrap portrait">
+            <iframe src="https://www.instagram.com/reel/DV6MRLuEtpt/embed" loading="lazy" allowtransparency="true" allow="encrypted-media"></iframe>
+          </div>
+          <div class="vid-info">
+            <div class="vid-tag">Reels · Instagram</div>
+            <div class="vid-title">Reel 3</div>
+          </div>
+        </div>
+
+        <div class="vid-card">
+          <div class="vid-embed-wrap portrait">
+            <iframe src="https://www.instagram.com/reel/DZCwBS6Kr5i/embed" loading="lazy" allowtransparency="true" allow="encrypted-media"></iframe>
+          </div>
+          <div class="vid-info">
+            <div class="vid-tag">Reels · Instagram</div>
+            <div class="vid-title">Reel 4</div>
+          </div>
+        </div>
+
+      </div>
     </div>
+
+    <!-- LONG VIDEOS -->
+    <div class="cat-panel" id="cat-long">
+      <div class="vid-grid">
+
+        <div class="vid-card">
+          <div class="vid-embed-wrap landscape">
+            <iframe src="https://www.youtube.com/embed/_I1o-pLcibY" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+          </div>
+          <div class="vid-info">
+            <div class="vid-tag">Long Form · YouTube</div>
+            <div class="vid-title">Long Video 1</div>
+          </div>
+        </div>
+
+        <div class="vid-card">
+          <div class="vid-embed-wrap portrait">
+            <iframe src="https://www.instagram.com/reel/DQrQw7GkqHa/embed" loading="lazy" allowtransparency="true" allow="encrypted-media"></iframe>
+          </div>
+          <div class="vid-info">
+            <div class="vid-tag">Long Form · Instagram</div>
+            <div class="vid-title">Long Video 2</div>
+          </div>
+        </div>
+
+        <div class="vid-card">
+          <div class="vid-embed-wrap landscape">
+            <iframe src="https://www.youtube.com/embed/TQakPjA4xqM" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+          </div>
+          <div class="vid-info">
+            <div class="vid-tag">Long Form · YouTube</div>
+            <div class="vid-title">Long Video 3</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MUSIC VIDEOS -->
+    <div class="cat-panel" id="cat-music">
+      <div class="vid-grid">
+
+        <div class="vid-card">
+          <div class="vid-embed-wrap landscape">
+            <iframe src="https://www.youtube.com/embed/e4Fz77SrlWQ" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+          </div>
+          <div class="vid-info">
+            <div class="vid-tag">Music Video · YouTube</div>
+            <div class="vid-title">Music Video 1</div>
+          </div>
+        </div>
+
+        <div class="vid-card">
+          <div class="vid-embed-wrap landscape">
+            <iframe src="https://www.youtube.com/embed/FjG3wjeMGWs" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+          </div>
+          <div class="vid-info">
+            <div class="vid-tag">Music Video · YouTube</div>
+            <div class="vid-title">Music Video 2</div>
+          </div>
+        </div>
+
+        <div class="vid-card">
+          <div class="vid-embed-wrap landscape">
+            <iframe src="https://www.youtube.com/embed/Khfd0pOQ9Is" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+          </div>
+          <div class="vid-info">
+            <div class="vid-tag">Music Video · YouTube</div>
+            <div class="vid-title">Music Video 3</div>
+          </div>
+        </div>
+
+        <div class="vid-card">
+          <div class="vid-embed-wrap landscape">
+            <iframe src="https://www.youtube.com/embed/-W5ioe4lI30" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+          </div>
+          <div class="vid-info">
+            <div class="vid-tag">Music Video · YouTube</div>
+            <div class="vid-title">Music Video 4</div>
+          </div>
+        </div>
+
+        <div class="vid-card">
+          <div class="vid-embed-wrap landscape">
+            <iframe src="https://www.youtube.com/embed/cJT5267R_gE" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+          </div>
+          <div class="vid-info">
+            <div class="vid-tag">Music Video · YouTube</div>
+            <div class="vid-title">Music Video 5</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -765,21 +815,17 @@
     });
   });
 
-  // Before/After video toggle
-  document.querySelectorAll('.work-card').forEach(function(card) {
-    var btns = card.querySelectorAll('.ba-toggle-btn');
-    btns.forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        btns.forEach(function(b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-        card.querySelectorAll('.ba-embed-pane').forEach(function(pane) {
-          pane.classList.remove('active');
-        });
-        document.getElementById(btn.dataset.target).classList.add('active');
-      });
+  // Category tab switcher
+  document.querySelectorAll('.cat-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.cat-tab').forEach(function(t) { t.classList.remove('active'); });
+      document.querySelectorAll('.cat-panel').forEach(function(p) { p.classList.remove('active'); });
+      tab.classList.add('active');
+      document.getElementById('cat-' + tab.dataset.cat).classList.add('active');
     });
   });
 
+  // Toggle कड़क ↔ KADDAK every 4 seconds
   var hindi = document.getElementById('layer-hindi');
   var eng = document.getElementById('layer-eng');
   var showingHindi = true;
